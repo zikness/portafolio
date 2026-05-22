@@ -15,9 +15,9 @@ function showAlert(containerId, message, type = 'success') {
 
 async function apiCall(endpoint, method, data) {
     const res = await fetch(API + endpoint, {
-        method,
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, _method: method }),
     });
     return res.json();
 }

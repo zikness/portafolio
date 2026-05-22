@@ -10,8 +10,8 @@ if (!isset($_SESSION['admin_logged'])) {
 
 require_once __DIR__ . '/../config/database.php';
 
-$method = $_SERVER['REQUEST_METHOD'];
 $body   = json_decode(file_get_contents('php://input'), true) ?? [];
+$method = !empty($body['_method']) ? strtoupper($body['_method']) : $_SERVER['REQUEST_METHOD'];
 $db     = getDB();
 
 if ($method === 'GET') {
