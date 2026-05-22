@@ -252,17 +252,29 @@ function starsHTML(int $pct): string {
 
         <div class="row g-4 fade-in-up">
             <?php foreach ($projs as $p):
-                $tags = array_filter(array_map('trim', explode(',', $p['tecnologias_usadas'] ?? '')));
+                $tags     = array_filter(array_map('trim', explode(',', $p['tecnologias_usadas'] ?? '')));
+                $hasDemo  = !empty($p['url_demo'])   && $p['url_demo']   !== '#';
+                $hasGit   = !empty($p['url_github']) && $p['url_github'] !== '#';
+                $demoHref = $hasDemo ? htmlspecialchars($p['url_demo'])   : '#';
+                $gitHref  = $hasGit  ? htmlspecialchars($p['url_github']) : '#';
             ?>
             <div class="col-md-6">
                 <div class="project-card">
+                    <!-- Image area with overlay buttons -->
                     <div class="project-img">
                         <?php if (!empty($p['imagen'])): ?>
                             <img src="<?= htmlspecialchars($p['imagen']) ?>" alt="<?= htmlspecialchars($p['titulo']) ?>"/>
-                        <?php else: ?>
-                            <i class="bi bi-code-slash placeholder-icon"></i>
                         <?php endif; ?>
+                        <div class="project-img-overlay">
+                            <a href="<?= $demoHref ?>" <?= $hasDemo ? 'target="_blank"' : '' ?> class="btn-overlay-demo">
+                                <i class="bi bi-box-arrow-up-right"></i> Demo
+                            </a>
+                            <a href="<?= $gitHref ?>" <?= $hasGit ? 'target="_blank"' : '' ?> class="btn-overlay-code">
+                                <i class="bi bi-github"></i> Código
+                            </a>
+                        </div>
                     </div>
+                    <!-- Card body -->
                     <div class="project-body">
                         <h5><?= htmlspecialchars($p['titulo']) ?></h5>
                         <p><?= htmlspecialchars($p['descripcion'] ?? '') ?></p>
@@ -272,20 +284,12 @@ function starsHTML(int $pct): string {
                             <?php endforeach; ?>
                         </div>
                         <div class="project-links">
-                            <?php if (!empty($p['url_demo']) && $p['url_demo'] !== '#'): ?>
-                                <a href="<?= htmlspecialchars($p['url_demo']) ?>" target="_blank" class="btn-project demo">
-                                    <i class="bi bi-eye"></i> Demo
-                                </a>
-                            <?php else: ?>
-                                <span class="btn-project demo"><i class="bi bi-eye"></i> Demo</span>
-                            <?php endif; ?>
-                            <?php if (!empty($p['url_github']) && $p['url_github'] !== '#'): ?>
-                                <a href="<?= htmlspecialchars($p['url_github']) ?>" target="_blank" class="btn-project">
-                                    <i class="bi bi-github"></i> GitHub
-                                </a>
-                            <?php else: ?>
-                                <span class="btn-project"><i class="bi bi-github"></i> GitHub</span>
-                            <?php endif; ?>
+                            <a href="<?= $demoHref ?>" <?= $hasDemo ? 'target="_blank"' : '' ?> class="btn-project-link">
+                                <i class="bi bi-box-arrow-up-right"></i> Ver demo
+                            </a>
+                            <a href="<?= $gitHref ?>" <?= $hasGit ? 'target="_blank"' : '' ?> class="btn-project-link">
+                                <i class="bi bi-github"></i> Repositorio
+                            </a>
                         </div>
                     </div>
                 </div>

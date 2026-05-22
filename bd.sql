@@ -131,4 +131,7 @@ INSERT INTO proyectos (titulo, descripcion, tecnologias_usadas, url_demo, url_gi
  'Panel de visualización de datos con gráficos interactivos, reportes en tiempo real y exportación de datos.',
  'JavaScript,Chart.js,PHP,API', '#', '#', 4);
 
--- NOTA: Ejecutar install.php para crear el usuario administrador
+-- Usuario administrador por defecto: admin / admin
+-- (Cambiar la contraseña desde install.php después del primer ingreso)
+INSERT IGNORE INTO usuarios (username, password_hash) VALUES
+('admin', '$2y$12$K2NgQRBOuoYs0Rk1If3hHeqbmfgo7hUIgc6HIqKHFsYwwEneyNflq');
