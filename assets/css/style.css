@@ -30,27 +30,15 @@ body {
     overflow-x: hidden;
 }
 
-/* ---- Topographic background ---- */
+/* ---- Marble background — overlay inline, sin pseudo-elementos ---- */
 .topo-bg {
     background-color: var(--dark-bg);
-    background-image: url('../img/abstract-marble.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-/* Overlay oscuro para mantener legibilidad del texto */
-.topo-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(13, 17, 23, 0.82);
-    pointer-events: none;
-    z-index: 0;
-}
-.topo-bg > .container,
-.topo-bg > .container-fluid {
-    position: relative;
-    z-index: 1;
+    background-image:
+        linear-gradient(rgba(13, 17, 23, 0.72), rgba(13, 17, 23, 0.72)),
+        url('../img/abstract-marble.jpg');
+    background-size: auto, cover;
+    background-position: center, center;
+    background-repeat: repeat, no-repeat;
 }
 
 /* ============================================================
@@ -68,14 +56,17 @@ body {
 }
 
 #mainNav .navbar-brand img {
-    height: 44px;
+    height: 48px;
     width: auto;
-    max-width: 120px;
+    max-width: 140px;
     object-fit: contain;
-    filter: brightness(1);
     transition: var(--transition);
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
 }
-#mainNav .navbar-brand img:hover { filter: brightness(0.85); }
+#mainNav .navbar-brand img:hover {
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.30));
+    transform: scale(1.05);
+}
 
 #mainNav .nav-link {
     color: var(--text-muted) !important;
