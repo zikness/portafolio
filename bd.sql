@@ -3,11 +3,11 @@
 -- Base de Datos MySQL
 -- ============================================================
 
-CREATE DATABASE IF NOT EXISTS portafolio_db
+CREATE DATABASE IF NOT EXISTS caguilera_db2
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
-USE portafolio_db;
+USE caguilera_db2;
 
 -- ============================================================
 -- TABLA: usuarios
@@ -24,12 +24,12 @@ CREATE TABLE IF NOT EXISTS usuarios (
 -- ============================================================
 CREATE TABLE IF NOT EXISTS biografia (
     id              INT AUTO_INCREMENT PRIMARY KEY,
-    nombre          VARCHAR(100) NOT NULL DEFAULT 'Juan Pérez',
-    cargo           VARCHAR(100) DEFAULT 'Desarrollador Full Stack',
+    nombre          VARCHAR(100) NOT NULL DEFAULT 'Christopher Aguilera',
+    cargo           VARCHAR(100) DEFAULT 'Estudiante de Tecnico en Informática',
     descripcion     TEXT,
     descripcion_extra TEXT,
     foto            VARCHAR(255) DEFAULT NULL,
-    email           VARCHAR(150) DEFAULT 'contacto@ejemplo.com',
+    email           VARCHAR(150) DEFAULT 'c.danielaguilera29@gmail.com',
     updated_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
@@ -88,9 +88,9 @@ CREATE TABLE IF NOT EXISTS contacto (
 -- ============================================================
 
 INSERT INTO biografia (nombre, cargo, descripcion, descripcion_extra, email) VALUES (
-    'Juan Pérez',
-    'Desarrollador Full Stack',
-    'Desarrollador web con experiencia en tecnologías modernas y escalables. Apasionado por crear soluciones tecnológicas que mejoran la vida de las personas. Experto en tecnologías modernas y mejores prácticas de desarrollo.',
+    'Christopher Aguilera',
+    'Estudiante de Tecnico en Informática',
+    'Estudiante de técnico en informática con interés en el desarrollo web y la resolución de problemas. Apasionado por aprender nuevas tecnologías y mejorar continuamente mis habilidades.',
     'Me enfoco en escribir código limpio y mantenible para proyectos escalables. Trabajo con tecnologías web modernas para construir aplicaciones robustas y de alto rendimiento. Comprometido con la innovación y siempre explorando nuevas tecnologías en cada proyecto.',
     'contacto@ejemplo.com'
 );

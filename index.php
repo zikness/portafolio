@@ -8,17 +8,17 @@ try {
     $techs = $db->query("SELECT * FROM tecnologias ORDER BY orden ASC")->fetchAll();
     $projs = $db->query("SELECT * FROM proyectos ORDER BY orden ASC")->fetchAll();
 } catch (Exception $e) {
-    $bio   = ['nombre'=>'Juan Pérez','cargo'=>'Desarrollador Full Stack','descripcion'=>'Bienvenido a mi portafolio.','descripcion_extra'=>'','email'=>'contacto@ejemplo.com','foto'=>null];
+    $bio   = ['nombre'=>'Christopher Aguilera','cargo'=>'Estudiante de Tecnico en Informática','descripcion'=>'Bienvenido a mi portafolio.','descripcion_extra'=>'','email'=>'c.danielaguilera29@gmail.com','foto'=>null];
     $habs  = [];
     $techs = [];
     $projs = [];
 }
 
-$nombre = htmlspecialchars($bio['nombre'] ?? 'Juan Pérez');
-$cargo  = htmlspecialchars($bio['cargo']  ?? 'Desarrollador Full Stack');
+$nombre = htmlspecialchars($bio['nombre'] ?? 'Christopher Aguilera');
+$cargo  = htmlspecialchars($bio['cargo']  ?? 'Estudiante de Tecnico en Informática');
 $desc1  = htmlspecialchars($bio['descripcion'] ?? '');
 $desc2  = htmlspecialchars($bio['descripcion_extra'] ?? '');
-$email  = htmlspecialchars($bio['email'] ?? 'contacto@ejemplo.com');
+$email  = htmlspecialchars($bio['email'] ?? 'c.danielaguilera29@gmail.com');
 
 function nivelBadge(string $nivel): string {
     $map = ['experto'=>'experto','avanzado'=>'avanzado','intermedio'=>'intermedio','básico'=>'basico','basico'=>'basico'];
