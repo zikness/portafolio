@@ -48,7 +48,9 @@ portafolio/
     │   ├── main.js        # JS del portafolio público
     │   └── admin.js       # JS del panel administrativo
     └── img/
-        └── topo-pattern.svg  # Patrón topográfico de fondo
+        └── topo-pattern.png  # Logo
+        └── marble-pattern.png  # Patrón topográfico de fondo
+
 ```
 
 ## Instalación
