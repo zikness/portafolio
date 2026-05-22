@@ -62,13 +62,9 @@ function starsHTML(int $pct): string {
             <li class="nav-item"><a class="nav-link active" href="#biografia">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
         </ul>
-        <!-- Center brand -->
+        <!-- Center brand — logo onimask -->
         <a class="navbar-brand mx-3" href="#biografia">
-            <?php if (!empty($bio['foto'])): ?>
-                <img src="<?= htmlspecialchars($bio['foto']) ?>" alt="<?= $nombre ?>"/>
-            <?php else: ?>
-                <img src="https://ui-avatars.com/api/?name=<?= urlencode($nombre) ?>&background=161b22&color=e6edf3&size=48&rounded=true&bold=true" alt="<?= $nombre ?>"/>
-            <?php endif; ?>
+            <img src="assets/img/onimask-white.png" alt="<?= $nombre ?>" onerror="this.src='https://ui-avatars.com/api/?name=<?= urlencode($nombre) ?>&background=161b22&color=e6edf3&size=48&rounded=true&bold=true'"/>
         </a>
         <!-- Right links -->
         <ul class="nav nav-right">

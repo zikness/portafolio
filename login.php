@@ -29,10 +29,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: admin/index.php');
                 exit;
             } else {
-                $error = 'Credenciales incorrectas.';
+                $error = 'Credenciales incorrectas. Usuario o contraseña inválidos.';
+            }
+        } catch (PDOException $e) {
+            $msg = $e->getMessage();
+            if (str_contains($msg, 'Access denied') || str_contains($msg, 'No such host')) {
+                $error = 'No se puede conectar a la base de datos. Verifica las credenciales en config/database.php.';
+            } elseif (str_contains($msg, "doesn't exist") || str_contains($msg, 'Unknown database')) {
+                $error = 'La base de datos no existe. Importa bd.sql en phpMyAdmin del servidor.';
+            } elseif (str_contains($msg, "Table") && str_contains($msg, "doesn't exist")) {
+                $error = 'Las tablas no existen. Importa bd.sql en phpMyAdmin del servidor.';
+            } else {
+                $error = 'Error de base de datos: ' . htmlspecialchars($msg);
             }
         } catch (Exception $e) {
-            $error = 'Error de conexión a la base de datos.';
+            $error = 'Error inesperado: ' . htmlspecialchars($e->getMessage());
         }
     }
 }

@@ -30,14 +30,28 @@ body {
     overflow-x: hidden;
 }
 
-/* ---- Marble background ---- */
+/* ---- Marble background (imagen real) ---- */
 .topo-bg {
     background-color: var(--dark-bg);
-    background-image: url('../img/marble-pattern.svg');
+    background-image: url('../img/abstract-marble.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+}
+/* Overlay oscuro para mantener legibilidad del texto */
+.topo-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 17, 23, 0.82);
+    pointer-events: none;
+    z-index: 0;
+}
+.topo-bg > .container,
+.topo-bg > .container-fluid {
+    position: relative;
+    z-index: 1;
 }
 
 /* ============================================================
@@ -55,14 +69,14 @@ body {
 }
 
 #mainNav .navbar-brand img {
-    width: 48px;
-    height: 48px;
-    object-fit: cover;
-    border: 2px solid var(--dark-border);
-    border-radius: 50%;
+    height: 44px;
+    width: auto;
+    max-width: 120px;
+    object-fit: contain;
+    filter: brightness(1);
     transition: var(--transition);
 }
-#mainNav .navbar-brand img:hover { border-color: var(--accent); }
+#mainNav .navbar-brand img:hover { filter: brightness(0.85); }
 
 #mainNav .nav-link {
     color: var(--text-muted) !important;
