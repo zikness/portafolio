@@ -30,17 +30,10 @@ body {
     overflow-x: hidden;
 }
 
-<<<<<<< HEAD
 /* ---- Topographic background ---- */
 .topo-bg {
     background-color: var(--dark-bg);
-    background-image: url('../img/marble-pattern.jpg');
-=======
-/* ---- Marble background (imagen real) ---- */
-.topo-bg {
-    background-color: var(--dark-bg);
     background-image: url('../img/abstract-marble.jpg');
->>>>>>> fcf7ee7dff249c5462580c64651772e0f2df3a80
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
