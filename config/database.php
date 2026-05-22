@@ -2,7 +2,7 @@
 define('DB_HOST',    'localhost');
 define('DB_NAME',    'caguilera_db2');
 define('DB_USER',    'caguilera');
-define('DB_PASS',    'CgX91mQp');
+define('DB_PASS',    'CgX91mQp#');
 define('DB_CHARSET', 'utf8mb4');
 
 function getDB(): PDO {
