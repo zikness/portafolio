@@ -144,19 +144,23 @@ function starsHTML(int $pct): string {
         </div>
 
         <?php if ($habs): ?>
-        <div class="swiper skillSwiper fade-in-up">
-            <div class="swiper-wrapper pb-4">
-                <?php foreach ($habs as $h): ?>
-                <div class="swiper-slide">
-                    <div class="skill-card">
-                        <i class="<?= htmlspecialchars($h['icono']) ?> skill-icon"></i>
-                        <h6><?= htmlspecialchars($h['nombre']) ?></h6>
-                        <p><?= htmlspecialchars($h['descripcion'] ?? '') ?></p>
+        <div class="skill-carousel-wrapper fade-in-up">
+            <button class="skill-nav-btn skill-nav-prev" aria-label="Anterior"><i class="bi bi-chevron-left"></i></button>
+            <div class="swiper skillSwiper">
+                <div class="swiper-wrapper pb-4">
+                    <?php foreach ($habs as $h): ?>
+                    <div class="swiper-slide">
+                        <div class="skill-card">
+                            <i class="<?= htmlspecialchars($h['icono']) ?> skill-icon"></i>
+                            <h6><?= htmlspecialchars($h['nombre']) ?></h6>
+                            <p><?= htmlspecialchars($h['descripcion'] ?? '') ?></p>
+                        </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
-                <?php endforeach; ?>
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="swiper-pagination"></div>
+            <button class="skill-nav-btn skill-nav-next" aria-label="Siguiente"><i class="bi bi-chevron-right"></i></button>
         </div>
         <?php else: ?>
         <div class="row g-3">
@@ -251,8 +255,8 @@ function starsHTML(int $pct): string {
                 $tags     = array_filter(array_map('trim', explode(',', $p['tecnologias_usadas'] ?? '')));
                 $hasDemo  = !empty($p['url_demo'])   && $p['url_demo']   !== '#';
                 $hasGit   = !empty($p['url_github']) && $p['url_github'] !== '#';
-                $demoHref = $hasDemo ? htmlspecialchars($p['url_demo'])   : '#';
-                $gitHref  = $hasGit  ? htmlspecialchars($p['url_github']) : '#';
+                $demoHref = $hasDemo ? htmlspecialchars($p['url_demo'])   : 'javascript:void(0)';
+                $gitHref  = $hasGit  ? htmlspecialchars($p['url_github']) : 'javascript:void(0)';
             ?>
             <div class="col-md-6">
                 <div class="project-card">
@@ -262,10 +266,10 @@ function starsHTML(int $pct): string {
                             <img src="<?= htmlspecialchars($p['imagen']) ?>" alt="<?= htmlspecialchars($p['titulo']) ?>"/>
                         <?php endif; ?>
                         <div class="project-img-overlay">
-                            <a href="<?= $demoHref ?>" <?= $hasDemo ? 'target="_blank"' : '' ?> class="btn-overlay-demo">
+                            <a href="<?= $demoHref ?>" <?= $hasDemo ? 'target="_blank"' : '' ?> class="btn-overlay-demo<?= !$hasDemo ? ' link-disabled' : '' ?>">
                                 <i class="bi bi-box-arrow-up-right"></i> Demo
                             </a>
-                            <a href="<?= $gitHref ?>" <?= $hasGit ? 'target="_blank"' : '' ?> class="btn-overlay-code">
+                            <a href="<?= $gitHref ?>" <?= $hasGit ? 'target="_blank"' : '' ?> class="btn-overlay-code<?= !$hasGit ? ' link-disabled' : '' ?>">
                                 <i class="bi bi-github"></i> Código
                             </a>
                         </div>
@@ -280,10 +284,10 @@ function starsHTML(int $pct): string {
                             <?php endforeach; ?>
                         </div>
                         <div class="project-links">
-                            <a href="<?= $demoHref ?>" <?= $hasDemo ? 'target="_blank"' : '' ?> class="btn-project-link">
+                            <a href="<?= $demoHref ?>" <?= $hasDemo ? 'target="_blank"' : '' ?> class="btn-project-link<?= !$hasDemo ? ' link-disabled' : '' ?>">
                                 <i class="bi bi-box-arrow-up-right"></i> Ver demo
                             </a>
-                            <a href="<?= $gitHref ?>" <?= $hasGit ? 'target="_blank"' : '' ?> class="btn-project-link">
+                            <a href="<?= $gitHref ?>" <?= $hasGit ? 'target="_blank"' : '' ?> class="btn-project-link<?= !$hasGit ? ' link-disabled' : '' ?>">
                                 <i class="bi bi-github"></i> Repositorio
                             </a>
                         </div>

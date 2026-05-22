@@ -34,6 +34,22 @@ try {
         htmlspecialchars($asunto, ENT_QUOTES),
         htmlspecialchars($mensaje, ENT_QUOTES),
     ]);
+
+    // Send email notification
+    $to      = 'c.danielaguilera29@gmail.com';
+    $subject = '=?UTF-8?B?' . base64_encode('Nuevo contacto: ' . ($asunto ?: 'Sin asunto')) . '?=';
+    $body    = "Has recibido un nuevo mensaje desde tu portafolio web.\n\n"
+             . "Nombre:  {$nombre}\n"
+             . "Correo:  {$correo}\n"
+             . "Asunto:  " . ($asunto ?: 'Sin asunto') . "\n\n"
+             . "Mensaje:\n{$mensaje}\n\n"
+             . "---\nResponde directamente a: {$correo}";
+    $headers  = "From: portafolio@teclab.uct.cl\r\n"
+              . "Reply-To: {$correo}\r\n"
+              . "Content-Type: text/plain; charset=UTF-8\r\n"
+              . "X-Mailer: PHP/" . PHP_VERSION;
+    @mail($to, $subject, $body, $headers);
+
     echo json_encode(['success' => true, 'message' => '¡Mensaje enviado correctamente! Te responderé pronto.']);
 } catch (Exception $e) {
     http_response_code(500);

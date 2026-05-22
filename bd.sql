@@ -92,7 +92,7 @@ INSERT INTO biografia (nombre, cargo, descripcion, descripcion_extra, email) VAL
     'Estudiante de Tecnico en Informática',
     'Estudiante de técnico en informática con interés en el desarrollo web y la resolución de problemas. Apasionado por aprender nuevas tecnologías y mejorar continuamente mis habilidades.',
     'Me enfoco en escribir código limpio y mantenible para proyectos escalables. Trabajo con tecnologías web modernas para construir aplicaciones robustas y de alto rendimiento. Comprometido con la innovación y siempre explorando nuevas tecnologías en cada proyecto.',
-    'contacto@ejemplo.com'
+    'c.danielaguilera29@gmail.com'
 );
 
 INSERT INTO habilidades (nombre, icono, descripcion, orden) VALUES

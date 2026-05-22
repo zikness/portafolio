@@ -8,13 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.skillSwiper')) {
         new Swiper('.skillSwiper', {
             slidesPerView: 1,
+            slidesPerGroup: 1,
             spaceBetween: 16,
-            loop: true,
-            pagination: { el: '.swiper-pagination', clickable: true },
+            loop: false,
+            navigation: { nextEl: '.skill-nav-next', prevEl: '.skill-nav-prev' },
+            pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true },
             breakpoints: {
-                480:  { slidesPerView: 2 },
-                768:  { slidesPerView: 3 },
-                1024: { slidesPerView: 4 },
+                480:  { slidesPerView: 2, slidesPerGroup: 2 },
+                768:  { slidesPerView: 3, slidesPerGroup: 3 },
+                1024: { slidesPerView: 4, slidesPerGroup: 4 },
             },
         });
     }
