@@ -450,6 +450,6 @@ $projs = $db->query("SELECT * FROM proyectos ORDER BY orden ASC")->fetchAll();
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Admin JS -->
-<script src="../assets/js/admin.js"></script>
+<script src="../assets/js/admin.js?v=3"></script>
 </body>
 </html>

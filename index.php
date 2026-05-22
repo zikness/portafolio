@@ -144,10 +144,9 @@ function starsHTML(int $pct): string {
         </div>
 
         <?php if ($habs): ?>
-        <div class="skill-carousel-wrapper fade-in-up">
-            <button class="skill-nav-btn skill-nav-prev" aria-label="Anterior"><i class="bi bi-chevron-left"></i></button>
+        <div class="skill-swiper-wrap fade-in-up">
             <div class="swiper skillSwiper">
-                <div class="swiper-wrapper pb-4">
+                <div class="swiper-wrapper">
                     <?php foreach ($habs as $h): ?>
                     <div class="swiper-slide">
                         <div class="skill-card">
@@ -158,8 +157,9 @@ function starsHTML(int $pct): string {
                     </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination mt-3"></div>
             </div>
+            <button class="skill-nav-btn skill-nav-prev" aria-label="Anterior"><i class="bi bi-chevron-left"></i></button>
             <button class="skill-nav-btn skill-nav-next" aria-label="Siguiente"><i class="bi bi-chevron-right"></i></button>
         </div>
         <?php else: ?>
